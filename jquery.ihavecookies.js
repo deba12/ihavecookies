@@ -94,7 +94,7 @@
                     if (field.description !== false) {
                         cookieTypeDescription = ' title="' + field.description + '"';
                     }
-                    cookieTypes += '<li><input type="checkbox" id="gdpr-cookietype-' + field.value + '" name="gdpr[]" value="' + field.value + '" data-auto="on"> <label for="gdpr-cookietype-' + field.value + '"' + cookieTypeDescription + '>' + field.type + '</label></li>';
+                    cookieTypes += '<li><input type="checkbox" id="gdpr-cookietype-' + field.value + '" name="gdpr[]" value="' + field.value + '" data-auto="on"  checked="checked"> <label for="gdpr-cookietype-' + field.value + '"' + cookieTypeDescription + '>' + field.type + '</label></li>';
                 }
             });
 
@@ -159,7 +159,8 @@
                 // Uncheck all checkboxes except for the disabled 'necessary'
                 // one and set 'data-auto' to OFF for all. The user can now
                 // select the cookies they want to accept.
-                $('input[name="gdpr[]"]:not(:disabled)').attr('data-auto', 'off').prop('checked', false);
+                if(settings.forceDisplayPanel)
+			$('input[name="gdpr[]"]:not(:disabled)').attr('data-auto', 'off').prop('checked', false);
 
                 // TODO - theese should be dynamic from cookieTypes, not hardcoded as now
                 if ($.fn.ihavecookies.preference('marketing') === true) {
