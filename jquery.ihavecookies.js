@@ -113,7 +113,8 @@
                 $('#gdpr-cookie-message').hide().fadeIn('slow');
 
 				if(settings.advanced == true) {
-					$("button#gdpr-cookie-advanced").trigger("click");
+					$("button#gdpr-cookie-advanced").click();
+					$("button#gdpr-cookie-advanced").hide();
 				}
 
             }, settings.delay);
