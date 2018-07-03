@@ -76,7 +76,8 @@
                 if ($.fn.ihavecookies.preference('analytics') === false) {
                     // analytics cookie removal task goes here
                 }
-            }
+            },
+			advanced: false
         }, options);
 
         var myCookie = getCookie('cookieControl');
@@ -110,6 +111,11 @@
             setTimeout(function(){
                 $($element).append(cookieMessage);
                 $('#gdpr-cookie-message').hide().fadeIn('slow');
+
+				if(settings.advanced == true) {
+					$("button#gdpr-cookie-advanced").trigger("click");
+				}
+
             }, settings.delay);
 
             // When accept button is clicked drop cookie
