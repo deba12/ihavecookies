@@ -124,22 +124,22 @@
                 } else {
                     $('input[name="gdpr[]"][data-auto="on"]').prop('checked', false);
 
-                // TODO - theese should be dynamic from cookieTypes, not hardcoded as now
-                if( $('#gdpr-cookietype-marketing').data('auto') == 'on' ){
-                    if ($.fn.ihavecookies.preference('marketing') === true) {
-                        $('#gdpr-cookietype-marketing').prop('checked', true);
-                    }
-                }
-                if( $('#gdpr-cookietype-preferences').data('auto') == 'on' ){
-                    if ($.fn.ihavecookies.preference('preferences') === true) {
-                        $('#gdpr-cookietype-preferences').prop('checked', true);
-                    }
-                }
-                if( $('#gdpr-cookietype-analytics').data('auto') == 'on' ){
-                    if ($.fn.ihavecookies.preference('analytics') === true) {
-                        $('#gdpr-cookietype-analytics').prop('checked', true);
-                    }
-                }
+					// TODO - theese should be dynamic from cookieTypes, not hardcoded as now
+					if( $('#gdpr-cookietype-marketing').data('auto') == 'on' ){
+						if ($.fn.ihavecookies.preference('marketing') === true) {
+							$('#gdpr-cookietype-marketing').prop('checked', true);
+						}
+					}
+					if( $('#gdpr-cookietype-preferences').data('auto') == 'on' ){
+						if ($.fn.ihavecookies.preference('preferences') === true) {
+							$('#gdpr-cookietype-preferences').prop('checked', true);
+						}
+					}
+					if( $('#gdpr-cookietype-analytics').data('auto') == 'on' ){
+						if ($.fn.ihavecookies.preference('analytics') === true) {
+							$('#gdpr-cookietype-analytics').prop('checked', true);
+						}
+					}
 
                 }
 
@@ -160,7 +160,11 @@
                 // one and set 'data-auto' to OFF for all. The user can now
                 // select the cookies they want to accept.
                 if(settings.forceDisplayPanel)
-			$('input[name="gdpr[]"]:not(:disabled)').attr('data-auto', 'off').prop('checked', false);
+					$('input[name="gdpr[]"]:not(:disabled)').attr('data-auto', 'off').prop('checked', false);
+
+				$('input[name="gdpr[]"]:not(:disabled)').on('click', function() {
+					$(this).attr('data-auto', 'off');
+				});
 
                 // TODO - theese should be dynamic from cookieTypes, not hardcoded as now
                 if ($.fn.ihavecookies.preference('marketing') === true) {
